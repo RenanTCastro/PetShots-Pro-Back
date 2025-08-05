@@ -1,0 +1,6 @@
+/.env
+/node_modules
+/reuslts
+/server copy.js
+/testepagamento.js
+serviceAccountKey.json
