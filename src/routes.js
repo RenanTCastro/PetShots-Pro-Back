@@ -9,7 +9,9 @@ const UserController = require("./controllers/UserController");
 const CreditController = require("./controllers/CreditController");
 const PhotoController = require("./controllers/PhotoController");
 
-// User routes
+// Routes
+routes.get("/", (req, res)=> res.json({'server': 'ok'}));
+
 routes.post("/register", UserController.register);
 routes.post("/login", UserController.login);
 routes.get("/users/credits", authMiddleware, UserController.getCreditsById);
