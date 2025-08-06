@@ -8,7 +8,7 @@ module.exports = {
             const { credits } = req.body;
             const { user_id } = req.user;
 
-           const priceTable = { "1": 1990, "2": 2790, "3": 5490 };
+           const priceTable = { "1": 990};
 
             const unit_amount = priceTable[credits];
             if (!unit_amount) {
