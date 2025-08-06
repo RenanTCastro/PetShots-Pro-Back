@@ -10,7 +10,16 @@ const CreditController = require("./controllers/CreditController");
 const PhotoController = require("./controllers/PhotoController");
 
 // Routes
-routes.get("/", (req, res)=> res.json({'server': 'ok'}));
+routes.get("/", async (req, res) => {
+  try {
+    const knex = require('knex')(require('../knexfile').production); 
+    const result = await knex.raw("SELECT 1 + 1 AS resultado");
+    res.json({ status: "ok", result: result[0] });
+  } catch (error) {
+    console.error("❌ Erro na conexão com o banco:", error.message);
+    res.status(500).json({ status: "error", message: error.message });
+  }
+});
 
 routes.post("/register", UserController.register);
 routes.post("/login", UserController.login);
