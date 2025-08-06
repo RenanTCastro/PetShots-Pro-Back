@@ -22,6 +22,17 @@ app.use((error, req, res, next) => {
   res.json({ error: 'Ocorreu um erro! Tente novamente mais tarde.' });
 });
 
+app.get('/test-db', async (req, res) => {
+  try {
+    const knex = require('knex')(require('../knexfile').production); 
+    const result = await knex.raw("SELECT 1 + 1 AS resultado");
+    res.json({ status: "ok", result: result[0] });
+  } catch (error) {
+    console.error("❌ Erro na conexão com o banco:", error.message);
+    res.status(500).json({ status: "error", message: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   try {
     console.log(`Server listening on ${PORT}`);
