@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app.js",
-    "start": "node ./src/app.js"
+    "start": "./cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:3306 -credential_file=cloudsql-key.json & node src/app.js"
   },
   "keywords": [],
   "author": "",

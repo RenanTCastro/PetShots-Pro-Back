@@ -5,7 +5,7 @@ module.exports = {
     client: "mysql2",
     connection: {
       database: "petshots_db",
-      user:     'root',
+      user: 'root',
       password: '0000'
     },
     migrations: {
@@ -17,16 +17,15 @@ module.exports = {
   production: {
     client: "mysql2",
     connection: {
-      host: process.env.DB_HOST,
-      database: process.env.DB_NAME,
       user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      port: process.env.DB_PORT || 3306,
-      ssl: { rejectUnauthorized: true },
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      host: '127.0.0.1',
+      port: 3306
     },
     migrations: {
       tableName: "knex_migrations",
       directory: `${__dirname}/src/database/migrations`,
     },
-  },
+  }
 };
